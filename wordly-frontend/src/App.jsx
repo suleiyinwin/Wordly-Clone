@@ -23,7 +23,7 @@ const App = () => {
     const handleKeyPress = (event) => {
       const key = event.key.toUpperCase();
 
-      if (gameOver) return; // Don't allow typing if game is over
+      if (gameOver) return; 
 
       if (/^[A-Z]$/.test(key) && guess.length < COLUMNS) {
         handleInput(key);
@@ -42,7 +42,7 @@ const App = () => {
 
   const resetGame = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/new-word"); // Fetch a new word from backend
+      const response = await axios.get("http://localhost:5001/new-word"); 
       if (response.status === 200) {
         setGrid(Array(ROWS).fill("").map(() => Array(COLUMNS).fill("")));
         setCurrentRow(0);
@@ -108,7 +108,7 @@ const App = () => {
 
       if (response.data.win) {
         setMessage("🎉 You won!");
-        setScore(score + 10); // ✅ Increase score only if won
+        setScore(score + 10); 
         setGameOver(true);
       } else if (currentRow >= ROWS - 1) {
         setMessage("Game Over! Try again.");
